@@ -1,7 +1,13 @@
 # Entusyasta — site institucional
 
-Agência de growth marketing. Site de página única, escuro, com a pena da marca
-reconstruída em 3D e animações amarradas ao scroll.
+Agência de growth marketing. Site de página única, escuro, com animações
+amarradas ao scroll — mais uma apresentação institucional em slides.
+
+| | |
+|---|---|
+| Site | https://entusyasta.com.br · https://entusyasta.vercel.app |
+| Apresentação | https://entusyasta.com.br/apresentacao/ |
+| Repositório | https://github.com/mmtome/entusyasta |
 
 ---
 
@@ -22,7 +28,14 @@ Só isso. **Não há passo de build e não existe `node_modules`.**
 
 ## Publicar
 
-**No ar em https://entusyasta.vercel.app** — projeto `matheus-mm/entusyasta`.
+O projeto vive em três lugares e os três precisam ser atualizados a cada
+mudança: **GitHub** (fonte), **Vercel** e **HostGator**.
+
+```bash
+git add -A && git commit -m "..." && git push
+```
+
+### Vercel — projeto `matheus-mm/entusyasta`
 
 Para reimplantar depois de mexer em qualquer arquivo:
 
@@ -44,6 +57,26 @@ longo para `vendor/` e `fonts/`. O `.vercelignore` mantém fora do deploy os
 originais em `assets/` — inclusive um instalador `.exe` de 1,7 MB que estava
 ali — além do `.env.local` que a CLI cria com um token.
 
+### HostGator — entusyasta.com.br
+
+Publica-se por FTPS com um script que mora fora do Drive (a dependência e as
+credenciais não podem sincronizar para a nuvem):
+
+```bash
+cd C:\Users\mathe\AppData\Local\entusyasta-deps
+node hg.mjs check     # olha o que existe no servidor
+node hg.mjs deploy    # envia
+```
+
+**Atenção ao host:** o cPanel exibe `ftp.artmineiruberaba.com.br`, que **não tem
+registro IPv4** e não conecta de jeito nenhum. O servidor que funciona é
+`br196.hostgator.com.br`, porta 21, FTPS explícito.
+
+O `.htaccess` faz lá o que o `vercel.json` faz na Vercel: nega dotfiles, `.zip`,
+`.exe` e os arquivos de configuração, e liga compressão e cache. Depois de
+publicar, vale conferir que `/.env.local` responde 403 e que `/src/main.js`,
+`/vendor/gsap.js` e `/fonts/Ibrand.otf` respondem 200.
+
 Serve em qualquer outra hospedagem estática do mesmo jeito (Netlify, Hostinger,
 S3, Apache): os caminhos são relativos, funciona até em subdiretório.
 
@@ -53,6 +86,7 @@ S3, Apache): os caminhos são relativos, funciona até em subdiretório.
 
 ```
 index.html              markup + importmap
+apresentacao/           deck de 14 slides (index.html, deck.css, deck.js)
 src/
   main.js               orquestra tudo
   modules/
@@ -94,6 +128,31 @@ ponteiro no hero.
 `favicon-512.png` e `apple-touch-icon.png` são o mesmo símbolo centralizado num
 quadrado preto com cantos arredondados, que se lê tanto em aba clara quanto
 escura.
+
+---
+
+## Apresentação institucional
+
+`apresentacao/` — 14 slides em HTML, **sem nenhuma biblioteca**. Importa
+`../src/styles/tokens.css`, então herda a paleta e a tipografia do site: mudou a
+cor lá, mudou aqui.
+
+A mecânica é `scroll-snap-type: y mandatory`, o que já entrega swipe no celular,
+roda de mouse, barra de rolagem e histórico do navegador de graça. O JS só
+acrescenta teclado, bolinhas, barra de progresso e os atalhos.
+
+| Atalho | |
+|---|---|
+| `←` `→` `↑` `↓` `PageUp/Down` `espaço` | navegar |
+| `Home` / `End` | primeiro / último slide |
+| `F` | tela cheia |
+| `P` | imprimir — sai em A4 paisagem, um slide por página |
+
+Abrir direto num slide: `?s=7` ou `#7`.
+
+Roteiro: capa → o problema → quem somos → visão geral dos serviços → seis slides
+de serviço (um por frente, com entregáveis) → método → números → formatos de
+contrato → contato.
 
 ---
 
