@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Entusyasta — agência de growth marketing</title>
+    <meta
+      name="description"
+      content="Transformamos ideias em marcas vivas e experiências digitais memoráveis em lucro. Identidade visual, sites, tráfego pago, conteúdo e growth para marcas que querem crescer com método."
+    />
+    <meta name="theme-color" content="#040707" />
+    <!-- o arquivo de logo é 60x165: na aba viraria um risco espremido.
+         Estes são o mesmo símbolo centralizado num quadrado. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Entusyasta — agência de growth marketing" />
+    <meta
+      property="og:description"
+      content="Da essência visual ao clique final. Crescimento com método, não com sorte."
+    />
+    <meta property="og:image" content="logos/compacta-branca.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preload" href="fonts/Ibrand.otf" as="font" type="font/otf" crossorigin />
+    <link rel="stylesheet" href="src/styles/tokens.css" />
+    <link rel="stylesheet" href="src/styles/base.css" />
+    <link rel="stylesheet" href="src/styles/chrome.css" />
+    <link rel="stylesheet" href="src/styles/sections.css" />
+
+    <!-- as bibliotecas são ESM minificado servido do próprio site:
+         nenhum bundler e nenhuma CDN em tempo de execução -->
+    <script type="importmap">
+      {
+        "imports": {
+          "gsap": "./vendor/gsap.js",
+          "gsap/ScrollTrigger": "./vendor/gsap-scrolltrigger.js",
+          "lenis": "./vendor/lenis.js"
+        }
+      }
+    </script>
+    <link rel="modulepreload" href="vendor/gsap.js" />
+    <link rel="modulepreload" href="vendor/gsap-scrolltrigger.js" />
+  </head>
+
+  <body>
+    <!-- ══ preloader ══════════════════════════════════════════════ -->
+    <div class="preloader" id="preloader">
+      <div class="preloader__inner">
+        <img class="preloader__mark" src="logos/simbolo-ciano.png" alt="" aria-hidden="true" />
+        <div class="preloader__bar"><div class="preloader__fill" id="preFill"></div></div>
+        <div class="preloader__meta">
+          <span>entusyasta</span>
+          <span class="preloader__count" id="preCount">00</span>
+        </div>
+      </div>
+    </div>
+    <div class="preloader__curtain" id="curtain"></div>
+
+    <!-- ══ cursor + progresso ════════════════════════════════════ -->
+    <div class="cursor" id="cursor" aria-hidden="true">
+      <div class="cursor__ring"><span class="cursor__text" id="cursorText"></span></div>
+      <div class="cursor__dot"></div>
+    </div>
+    <div class="scroll-progress"><div class="scroll-progress__fill" id="progressFill"></div></div>
+
+    <!-- ══ navegação ═════════════════════════════════════════════ -->
+    <header class="nav" id="nav">
+      <div class="shell nav__inner">
+        <a class="nav__logo" href="#top" aria-label="Entusyasta — início" data-cursor="início">
+          <img src="logos/extensa-branca.png" alt="Entusyasta marketing digital" />
+        </a>
+
+        <nav aria-label="Principal">
+          <ul class="nav__links">
+            <li><a class="nav__link" href="#manifesto">manifesto</a></li>
+            <li><a class="nav__link" href="#servicos">serviços</a></li>
+            <li><a class="nav__link" href="#metodo">método</a></li>
+            <li><a class="nav__link" href="#cases">cases</a></li>
+            <li><a class="nav__link" href="#contato">contato</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav__right">
+          <a class="btn btn--solid" href="#contato" data-magnetic data-cursor="bora">
+            <span>vamos conversar</span>
+          </a>
+          <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="menu" id="menu">
+      <div class="shell">
+        <ul class="menu__list">
+          <li class="menu__item"><a class="menu__link" href="#manifesto">manifesto</a></li>
+          <li class="menu__item"><a class="menu__link" href="#servicos">serviços</a></li>
+          <li class="menu__item"><a class="menu__link" href="#metodo">método</a></li>
+          <li class="menu__item"><a class="menu__link" href="#cases">cases</a></li>
+          <li class="menu__item"><a class="menu__link" href="#contato">contato</a></li>
+        </ul>
+        <div class="menu__foot">
+          <a href="mailto:contato@entusyasta.com.br">contato@entusyasta.com.br</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener">instagram</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener">linkedin</a>
+        </div>
+      </div>
+    </div>
+
+    <main id="top">
+      <!-- ══ hero ════════════════════════════════════════════════ -->
+      <section class="hero" id="hero">
+        <img class="hero__hand" id="heroHand" src="img/mao-da-vinci.png" alt="" aria-hidden="true" />
+
+        <div class="angel angel--hero" data-angel data-cursor="arraste">
+          <img src="img/anjo-2.png" alt="" aria-hidden="true" />
+        </div>
+
+        <div class="shell hero__content">
+          <img
+            class="hero__symbol"
+            id="heroSymbol"
+            src="logos/simbolo-branco.png"
+            alt="Símbolo da Entusyasta"
+          />
+
+          <h1 class="hero__title" data-split>
+            transformamos ideias em <em class="accent">marcas vivas</em> e experiências digitais
+            memoráveis em <em class="accent">lucro</em>.
+          </h1>
+
+          <p class="hero__sub" data-reveal>
+            Da essência visual ao clique final. Growth marketing com método para marcas que
+            cansaram de crescer no improviso.
+          </p>
+
+          <div class="pills" data-stagger>
+            <span class="pill">identidade visual</span>
+            <span class="pill pill--brand">sites</span>
+            <span class="pill pill--brand">gestão de tráfego</span>
+            <span class="pill">estratégia de conteúdo</span>
+            <span class="pill">design gráfico</span>
+            <span class="pill">edição de vídeo</span>
+          </div>
+        </div>
+
+        <div class="hero__scroll">
+          <span class="hero__scroll-line"></span>
+          <span>role</span>
+        </div>
+      </section>
+
+      <!-- ══ marquee ═════════════════════════════════════════════ -->
+      <div class="marquee" id="marquee" aria-hidden="true">
+        <div class="marquee__track" id="marqueeTrack">
+          <span class="marquee__item">growth <i></i></span>
+          <span class="marquee__item">branding <i></i></span>
+          <span class="marquee__item">performance <i></i></span>
+          <span class="marquee__item">conteúdo <i></i></span>
+          <span class="marquee__item">conversão <i></i></span>
+          <span class="marquee__item">escala <i></i></span>
+        </div>
+      </div>
+
+      <!-- ══ manifesto ═══════════════════════════════════════════ -->
+      <section class="section manifesto" id="manifesto">
+        <div class="angel angel--manifesto" data-angel data-cursor="arraste">
+          <img src="img/anjo-3.png" alt="" aria-hidden="true" />
+        </div>
+
+        <div class="shell manifesto__grid">
+          <span class="label label--brand" data-reveal>01 — manifesto</span>
+
+          <h2 class="manifesto__big" data-split>
+            não somos uma agência de posts. somos o time que faz a sua marca
+            <em>virar receita</em>.
+          </h2>
+
+          <div class="manifesto__cols">
+            <p data-reveal>
+              A maioria das marcas não tem um problema de criatividade. Tem um problema de
+              sistema. Postar todo dia sem uma tese de crescimento é ruído caro. O que muda o
+              jogo é a soma: posicionamento afiado, identidade que ninguém confunde e uma
+              máquina de aquisição que você consegue ler em números.
+            </p>
+            <p data-reveal>
+              A pena do nosso símbolo não é enfeite. Ela é a ideia bruta: leve, precisa e
+              capaz de riscar algo que fica. É assim que trabalhamos: pouco peso operacional
+              para você, muita precisão no que entra em campo.
+            </p>
+            <p data-reveal>
+              Trabalhamos em ciclos curtos, com hipótese, teste e leitura de dado. Se um canal
+              não paga, ele sai. Se um criativo escala, ele vira sistema. Growth aqui não é
+              buzzword: é rotina.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ números ═════════════════════════════════════════════ -->
+      <section class="section stats" id="resultados">
+        <div class="shell">
+          <span class="label label--brand" data-reveal>02 — o que isso vira na prática</span>
+          <div class="stats__grid" style="margin-top: clamp(2rem, 5vw, 4rem)">
+            <div class="stat">
+              <div class="stat__value">
+                <span data-count="4.7" data-decimals="1">0</span><span class="stat__suffix">x</span>
+              </div>
+              <p class="stat__label">retorno médio sobre investimento em mídia nos contratos ativos</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">
+                <span data-count="120">0</span><span class="stat__suffix">+</span>
+              </div>
+              <p class="stat__label">projetos de marca e web entregues desde o primeiro traço</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">
+                <span data-count="63">0</span><span class="stat__suffix">%</span>
+              </div>
+              <p class="stat__label">de queda média no custo por lead nos primeiros 90 dias</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">
+                <span data-count="14">0</span><span class="stat__suffix">d</span>
+              </div>
+              <p class="stat__label">do briefing à primeira campanha rodando com criativo próprio</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ serviços ════════════════════════════════════════════ -->
+      <section class="section services" id="servicos">
+        <div class="shell">
+          <div class="services__head">
+            <div>
+              <span class="label label--brand" data-reveal>03 — serviços</span>
+              <h2 data-split style="margin-top: 1rem; max-width: 16ch">
+                tudo que a marca precisa para ser vista, lembrada e comprada.
+              </h2>
+            </div>
+            <p class="lead" data-reveal style="max-width: 38ch">
+              Cada frente entra por um motivo estratégico. Nada de pacote fechado só para
+              encher contrato.
+            </p>
+          </div>
+
+          <div class="svc-list" id="svcList">
+            <a class="svc" href="#contato" data-preview="0" data-cursor="ver">
+              <span class="svc__fill"></span>
+              <span class="svc__row">
+                <span class="svc__num">01</span>
+                <span class="svc__name">identidade visual</span>
+                <span class="svc__desc">naming, símbolo, sistema tipográfico e manual de marca</span>
+              </span>
+            </a>
+            <a class="svc" href="#contato" data-preview="1" data-cursor="ver">
+              <span class="svc__fill"></span>
+              <span class="svc__row">
+                <span class="svc__num">02</span>
+                <span class="svc__name">sites &amp; landing pages</span>
+                <span class="svc__desc">web design autoral, performance e páginas feitas para converter</span>
+              </span>
+            </a>
+            <a class="svc" href="#contato" data-preview="2" data-cursor="ver">
+              <span class="svc__fill"></span>
+              <span class="svc__row">
+                <span class="svc__num">03</span>
+                <span class="svc__name">gestão de tráfego</span>
+                <span class="svc__desc">meta, google e estruturas de campanha lidas por dado, não por achismo</span>
+              </span>
+            </a>
+            <a class="svc" href="#contato" data-preview="3" data-cursor="ver">
+              <span class="svc__fill"></span>
+              <span class="svc__row">
+                <span class="svc__num">04</span>
+                <span class="svc__name">estratégia de conteúdo</span>
+                <span class="svc__desc">linha editorial, roteiro e calendário ligados à jornada de compra</span>
+              </span>
+            </a>
+            <a class="svc" href="#contato" data-preview="4" data-cursor="ver">
+              <span class="svc__fill"></span>
+              <span class="svc__row">
+                <span class="svc__num">05</span>
+                <span class="svc__name">design gráfico</span>
+                <span class="svc__desc">peças on e offline, embalagem, apresentação e material comercial</span>
+              </span>
+            </a>
+            <a class="svc" href="#contato" data-preview="5" data-cursor="ver">
+              <span class="svc__fill"></span>
+              <span class="svc__row">
+                <span class="svc__num">06</span>
+                <span class="svc__name">edição de vídeo</span>
+                <span class="svc__desc">criativos para ads, reels e vídeos de venda com corte de retenção</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class="svc-preview" id="svcPreview" aria-hidden="true"></div>
+
+      <!-- ══ método ══════════════════════════════════════════════ -->
+      <section class="section method" id="metodo">
+        <div class="angel angel--method" data-angel data-cursor="arraste">
+          <img src="img/anjo-1.png" alt="" aria-hidden="true" />
+        </div>
+
+        <div class="shell method__wrap">
+          <div class="method__sticky">
+            <span class="label label--brand" data-reveal>04 — método</span>
+            <h2 data-split style="margin-top: 1rem; max-width: 12ch">o ciclo entusyasta</h2>
+            <p class="lead" data-reveal style="margin-top: 1.4rem; max-width: 34ch">
+              Cinco etapas que se repetem a cada ciclo. Nunca começamos pelo anúncio.
+              Começamos pelo motivo de alguém escolher você.
+            </p>
+            <div class="method__counter" id="methodCounter">01</div>
+          </div>
+
+          <div class="method__steps" id="methodSteps">
+            <article class="step" data-step="1">
+              <div class="step__top">
+                <span class="step__idx">01</span>
+                <h3>diagnóstico</h3>
+              </div>
+              <p>
+                Auditoria de marca, oferta, funil e concorrência. Mapeamos onde o dinheiro está
+                vazando antes de propor qualquer coisa nova.
+              </p>
+            </article>
+            <article class="step" data-step="2">
+              <div class="step__top">
+                <span class="step__idx">02</span>
+                <h3>posicionamento</h3>
+              </div>
+              <p>
+                Definimos a tese da marca: para quem, contra quem e por quê. Daí nasce a
+                identidade visual e o tom de voz, não o contrário.
+              </p>
+            </article>
+            <article class="step" data-step="3">
+              <div class="step__top">
+                <span class="step__idx">03</span>
+                <h3>aquisição</h3>
+              </div>
+              <p>
+                Estrutura de campanhas, criativos e canais. Testes desenhados para responder
+                perguntas específicas, com verba controlada.
+              </p>
+            </article>
+            <article class="step" data-step="4">
+              <div class="step__top">
+                <span class="step__idx">04</span>
+                <h3>conversão</h3>
+              </div>
+              <p>
+                Página, copy, prova e oferta. O tráfego só vira lucro quando o destino aguenta
+                a chegada. É aqui que a maioria perde dinheiro.
+              </p>
+            </article>
+            <article class="step" data-step="5">
+              <div class="step__top">
+                <span class="step__idx">05</span>
+                <h3>escala</h3>
+              </div>
+              <p>
+                O que provou retorno vira sistema: playbook de criativo, cadência de conteúdo e
+                orçamento crescente com leitura semanal.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ cases ═══════════════════════════════════════════════ -->
+      <section class="section cases" id="cases">
+        <div class="shell">
+          <div class="services__head">
+            <div>
+              <span class="label label--brand" data-reveal>05 — cases</span>
+              <h2 data-split style="margin-top: 1rem; max-width: 14ch">
+                marcas que saíram do improviso.
+              </h2>
+            </div>
+            <a class="btn btn--ghost" href="#contato" data-magnetic data-cursor="falar">
+              <span>quero um assim</span>
+            </a>
+          </div>
+
+          <div class="cases__grid" style="margin-top: clamp(2rem, 5vw, 4rem)">
+            <a class="case" href="#contato" data-tilt data-cursor="abrir">
+              <span class="case__media">
+                <span class="case__art" data-art="1"></span>
+                <span class="case__veil"></span>
+              </span>
+              <span class="case__body">
+                <span class="case__tag">identidade + tráfego</span>
+                <h3>estética &amp; saúde</h3>
+                <span class="case__result">
+                  Rebranding completo e reestruturação de campanhas: custo por agendamento caiu
+                  58% em três meses.
+                </span>
+              </span>
+              <span class="case__line"></span>
+            </a>
+
+            <a class="case" href="#contato" data-tilt data-cursor="abrir">
+              <span class="case__media">
+                <span class="case__art" data-art="2"></span>
+                <span class="case__veil"></span>
+              </span>
+              <span class="case__body">
+                <span class="case__tag">site + conteúdo</span>
+                <h3>indústria e engenharia</h3>
+                <span class="case__result">
+                  Site autoral com linha editorial técnica. Triplicou o volume de propostas
+                  qualificadas por mês.
+                </span>
+              </span>
+              <span class="case__line"></span>
+            </a>
+
+            <a class="case" href="#contato" data-tilt data-cursor="abrir">
+              <span class="case__media">
+                <span class="case__art" data-art="3"></span>
+                <span class="case__veil"></span>
+              </span>
+              <span class="case__body">
+                <span class="case__tag">growth completo</span>
+                <h3>varejo local</h3>
+                <span class="case__result">
+                  Da marca à operação de mídia. Faturamento 2,8x em seis meses com o mesmo time
+                  comercial.
+                </span>
+              </span>
+              <span class="case__line"></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ depoimentos ═════════════════════════════════════════ -->
+      <section class="section quotes" id="depoimentos">
+        <div class="shell" style="margin-bottom: clamp(2rem, 4vw, 3rem)">
+          <span class="label label--brand" data-reveal>06 — quem trabalha com a gente</span>
+        </div>
+        <div class="quotes__track" id="quotesTrack">
+          <blockquote class="quote">
+            <span class="quote__mark">“</span>
+            <p>
+              Foi a primeira vez que eu entendi para onde o dinheiro de mídia estava indo. O
+              relatório semanal virou reunião de decisão, não de desculpa.
+            </p>
+            <span class="quote__who"><strong>Diretora comercial</strong>rede de clínicas</span>
+          </blockquote>
+          <blockquote class="quote">
+            <span class="quote__mark">“</span>
+            <p>
+              A marca ficou irreconhecível, no melhor sentido. Passamos a ser lembrados antes
+              de sermos procurados.
+            </p>
+            <span class="quote__who"><strong>Sócio-fundador</strong>indústria de equipamentos</span>
+          </blockquote>
+          <blockquote class="quote">
+            <span class="quote__mark">“</span>
+            <p>
+              Entregaram o site em três semanas e ele converte melhor que a nossa loja física
+              em fim de semana. Ponto.
+            </p>
+            <span class="quote__who"><strong>Gerente de marketing</strong>varejo</span>
+          </blockquote>
+          <blockquote class="quote">
+            <span class="quote__mark">“</span>
+            <p>
+              O diferencial não é o design bonito, é a pergunta que eles fazem antes de
+              desenhar qualquer coisa.
+            </p>
+            <span class="quote__who"><strong>CEO</strong>serviços B2B</span>
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- ══ CTA final ═══════════════════════════════════════════ -->
+      <section class="section cta" id="contato">
+        <span class="cta__glow"></span>
+
+        <div class="angel angel--cta" data-angel data-cursor="arraste">
+          <img src="img/anjo-4.png" alt="" aria-hidden="true" />
+        </div>
+
+        <div class="shell cta__inner">
+          <span class="label label--brand" data-reveal>07 — próximo passo</span>
+          <h2 class="cta__title" data-split>sua ideia já existe. falta virar lucro.</h2>
+          <p class="lead" data-reveal style="text-align: center">
+            Conta o que você quer destravar. Em até 24h a gente responde com um diagnóstico
+            inicial, sem proposta genérica e sem enrolação.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center">
+            <a
+              class="btn btn--solid"
+              href="https://wa.me/5500000000000"
+              target="_blank"
+              rel="noopener"
+              data-magnetic
+              data-cursor="whatsapp"
+            >
+              <span>chamar no whatsapp</span>
+            </a>
+            <a
+              class="btn btn--ghost"
+              href="mailto:contato@entusyasta.com.br"
+              data-magnetic
+              data-cursor="e-mail"
+            >
+              <span>contato@entusyasta.com.br</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ══ rodapé ══════════════════════════════════════════════ -->
+    <footer class="footer">
+      <div class="shell">
+        <div class="footer__grid">
+          <div class="footer__col footer__logo">
+            <img src="logos/extensa-branca.png" alt="Entusyasta marketing digital" />
+            <p class="lead" style="font-size: 1rem; max-width: 34ch">
+              Agência de growth marketing. Identidade, web e mídia sob a mesma tese de
+              crescimento.
+            </p>
+          </div>
+
+          <div class="footer__col">
+            <h4>navegação</h4>
+            <ul>
+              <li><a href="#manifesto">manifesto</a></li>
+              <li><a href="#servicos">serviços</a></li>
+              <li><a href="#metodo">método</a></li>
+              <li><a href="#cases">cases</a></li>
+              <li><a href="#depoimentos">depoimentos</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__col">
+            <h4>contato</h4>
+            <ul>
+              <li><a href="mailto:contato@entusyasta.com.br">contato@entusyasta.com.br</a></li>
+              <li><a href="https://wa.me/5500000000000" target="_blank" rel="noopener">whatsapp</a></li>
+              <li><a href="https://instagram.com" target="_blank" rel="noopener">instagram</a></li>
+              <li><a href="https://linkedin.com" target="_blank" rel="noopener">linkedin</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__wordmark" aria-hidden="true">entusyasta</div>
+
+        <div class="footer__bottom">
+          <span>© <span id="year">2026</span> Entusyasta — marketing digital</span>
+          <span>feito com método, café e um pouco de teimosia</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

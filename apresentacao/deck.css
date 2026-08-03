@@ -1,0 +1,614 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ENTUSYASTA — apresentação institucional
+   Herda a paleta e a tipografia de ../src/styles/tokens.css, que é a
+   fonte da verdade do design. Nada de cor solta aqui.
+   ═══════════════════════════════════════════════════════════════════ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--f-body);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 400;
+  text-transform: lowercase;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+
+p {
+  margin: 0;
+}
+
+::selection {
+  background: var(--c-brand);
+  color: var(--preto);
+}
+
+/* ── o trilho de slides ────────────────────────────────────────────
+   scroll-snap em vez de transform: ganha swipe nativo no celular,
+   roda de mouse, teclado e barra de rolagem sem nenhum JS.        */
+.deck {
+  height: 100svh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+}
+
+.deck::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  position: relative;
+  min-height: 100svh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: grid;
+  align-content: center;
+  padding: clamp(3.5rem, 8vh, 6rem) clamp(1.5rem, 7vw, 7rem);
+  overflow: hidden;
+}
+
+.slide__inner {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+/* fundos alternados para dar ritmo à sequência */
+.slide--deep {
+  background: var(--g-abismo);
+}
+
+.slide--aurora {
+  background: var(--g-aurora);
+}
+
+/* ── entrada dos elementos ─────────────────────────────────────────
+   O IntersectionObserver põe .is-live no slide visível.            */
+[data-anim] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.8s var(--e-out), transform 0.8s var(--e-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+.is-live [data-anim] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── tipografia do slide ───────────────────────────────────────────── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-brand);
+  margin-bottom: clamp(1rem, 2.5vh, 1.8rem);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--c-brand);
+}
+
+.slide h2 {
+  font-size: clamp(1.9rem, 4.4vw, 4rem);
+  max-width: 18ch;
+}
+
+.slide h3 {
+  font-size: clamp(1.2rem, 1.9vw, 1.75rem);
+}
+
+.slide .texto {
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  color: var(--c-text-muted);
+  max-width: 62ch;
+  margin-top: clamp(1rem, 2.5vh, 1.8rem);
+}
+
+.destaque {
+  color: var(--c-brand);
+}
+
+/* ── capa ──────────────────────────────────────────────────────────── */
+.capa {
+  text-align: center;
+  justify-items: center;
+  display: grid;
+  gap: clamp(1.2rem, 3vh, 2.2rem);
+}
+
+.capa__simbolo {
+  height: clamp(58px, 7vw, 92px);
+  filter: drop-shadow(0 0 40px var(--c-brand-glow));
+}
+
+.capa__marca {
+  width: min(420px, 68vw);
+}
+
+.capa h1 {
+  font-size: clamp(1.6rem, 3.2vw, 2.8rem);
+  max-width: 20ch;
+  color: var(--c-text-muted);
+  font-family: var(--f-body);
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1.35;
+  text-transform: none;
+}
+
+.capa__meta {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+}
+
+/* ── grade de serviços ─────────────────────────────────────────────── */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(0.8rem, 1.6vw, 1.4rem);
+  margin-top: clamp(1.8rem, 4vh, 3rem);
+}
+
+/* três colunas fixas: com auto-fit os seis serviços caíam em 5+1 */
+@media (min-width: 900px) {
+  .grade {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  position: relative;
+  padding: clamp(1.2rem, 2vw, 1.7rem);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-md);
+  background: var(--g-vidro);
+  transition: border-color 0.4s var(--e-out), transform 0.4s var(--e-out);
+}
+
+.card:hover {
+  border-color: var(--c-brand);
+  transform: translateY(-4px);
+}
+
+.card__num {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--c-text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.card h3 {
+  margin: 0.7rem 0 0.5rem;
+}
+
+.card p {
+  font-size: 0.92rem;
+  color: var(--c-text-muted);
+}
+
+/* ── slide de serviço: texto à esquerda, entregáveis à direita ─────── */
+.servico {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.servico__num {
+  font-family: var(--f-display);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--c-line-strong);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 1rem;
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.lista li {
+  position: relative;
+  padding-left: 1.7rem;
+  font-size: clamp(0.95rem, 1.05vw, 1.08rem);
+  color: var(--c-text-muted);
+}
+
+.lista li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-brand);
+}
+
+.lista--titulo {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+/* ── etapas do método ──────────────────────────────────────────────── */
+.etapas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: clamp(0.8rem, 1.5vw, 1.2rem);
+  margin-top: clamp(1.8rem, 4vh, 3rem);
+  counter-reset: etapa;
+}
+
+.etapa {
+  padding: clamp(1.1rem, 1.8vw, 1.5rem);
+  border-top: 2px solid var(--c-brand);
+  background: linear-gradient(180deg, rgba(0, 183, 172, 0.09), transparent 70%);
+}
+
+.etapa span {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--c-brand);
+  font-variant-numeric: tabular-nums;
+}
+
+.etapa h3 {
+  margin: 0.6rem 0 0.5rem;
+  font-size: clamp(1.05rem, 1.5vw, 1.4rem);
+}
+
+.etapa p {
+  font-size: 0.88rem;
+  color: var(--c-text-muted);
+}
+
+/* ── números ───────────────────────────────────────────────────────── */
+.numeros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+  margin-top: clamp(1.8rem, 4vh, 3rem);
+}
+
+.numero__valor {
+  font-family: var(--f-display);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 0.85;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: baseline;
+  gap: 0.04em;
+}
+
+.numero__valor i {
+  font-style: normal;
+  color: var(--c-brand);
+}
+
+.numero p {
+  margin-top: 0.8rem;
+  font-size: 0.92rem;
+  color: var(--c-text-muted);
+  max-width: 26ch;
+}
+
+/* ── contato ───────────────────────────────────────────────────────── */
+.contato {
+  display: grid;
+  gap: clamp(1.4rem, 3vh, 2.4rem);
+  justify-items: center;
+  text-align: center;
+}
+
+.contato h2 {
+  max-width: 16ch;
+}
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 1.7rem;
+  border-radius: var(--r-pill);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 0.4s var(--e-out), color 0.4s var(--e-out),
+    border-color 0.4s var(--e-out);
+}
+
+.botao--cheio {
+  background: var(--c-brand);
+  color: var(--preto);
+  font-weight: 500;
+}
+
+.botao--cheio:hover {
+  background: var(--marfim);
+}
+
+.botao--linha {
+  border: 1px solid var(--c-line-strong);
+  color: var(--c-text);
+}
+
+.botao--linha:hover {
+  background: var(--marfim);
+  color: var(--preto);
+  border-color: var(--marfim);
+}
+
+/* ── anjos e pena, os mesmos do site ───────────────────────────────── */
+.anjo {
+  position: absolute;
+  pointer-events: none;
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.55));
+  animation: flutuar 7s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(2.5deg);
+  }
+}
+
+.pena-fundo {
+  position: absolute;
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+/* ── navegação ─────────────────────────────────────────────────────── */
+.barra {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 50;
+  background: rgba(251, 249, 243, 0.08);
+}
+
+.barra__preenche {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--c-brand), var(--teal-300));
+  transition: width 0.4s var(--e-out);
+}
+
+.topo {
+  position: fixed;
+  top: clamp(1rem, 3vh, 2rem);
+  left: clamp(1.5rem, 7vw, 7rem);
+  right: clamp(1.5rem, 7vw, 7rem);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.topo img {
+  height: 22px;
+  opacity: 0.9;
+}
+
+.contador {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: var(--c-text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.contador b {
+  color: var(--c-text);
+  font-weight: 400;
+}
+
+.pontos {
+  position: fixed;
+  right: clamp(0.8rem, 2vw, 1.8rem);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.ponto {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 1px solid var(--c-line-strong);
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  transition: all 0.35s var(--e-out);
+}
+
+.ponto:hover {
+  border-color: var(--c-brand);
+}
+
+.ponto.is-atual {
+  background: var(--c-brand);
+  border-color: var(--c-brand);
+  transform: scale(1.35);
+}
+
+.ajuda {
+  position: fixed;
+  bottom: clamp(1rem, 3vh, 2rem);
+  left: clamp(1.5rem, 7vw, 7rem);
+  z-index: 40;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--c-text-faint);
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.ajuda kbd {
+  display: inline-block;
+  min-width: 20px;
+  padding: 2px 6px;
+  border: 1px solid var(--c-line-strong);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 0.68rem;
+  text-align: center;
+  color: var(--c-text-muted);
+}
+
+.seta {
+  position: fixed;
+  bottom: clamp(1rem, 3vh, 2rem);
+  right: clamp(1.5rem, 7vw, 7rem);
+  z-index: 40;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.seta button {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--c-line-strong);
+  border-radius: 50%;
+  background: rgba(4, 7, 7, 0.5);
+  color: var(--c-text);
+  cursor: pointer;
+  transition: all 0.35s var(--e-out);
+}
+
+.seta button:hover:not(:disabled) {
+  background: var(--c-brand);
+  border-color: var(--c-brand);
+  color: var(--preto);
+}
+
+.seta button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* ── responsivo ────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .servico {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+  .pontos,
+  .ajuda {
+    display: none;
+  }
+  .anjo {
+    opacity: 0.5;
+    width: 110px !important;
+  }
+}
+
+/* ── impressão: vira PDF com um slide por página ───────────────────── */
+@media print {
+  body {
+    overflow: visible;
+    background: #040707;
+  }
+  .deck {
+    height: auto;
+    overflow: visible;
+  }
+  .slide {
+    min-height: auto;
+    height: 185mm;
+    page-break-after: always;
+    break-after: page;
+  }
+  [data-anim] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .topo,
+  .pontos,
+  .ajuda,
+  .seta,
+  .barra {
+    display: none !important;
+  }
+  @page {
+    size: A4 landscape;
+    margin: 6mm;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-anim] {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .anjo {
+    animation: none;
+  }
+}

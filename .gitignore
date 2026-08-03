@@ -1,0 +1,18 @@
+# segredos e estado de ferramentas — nunca versionar
+.env
+.env.local
+.env*.local
+.vercel/
+
+# originais do designer: arquivos grandes que não pertencem ao repositório
+# do site (os assets servidos estão em img/, logos/ e fonts/)
+assets/
+
+# pacotes gerados para upload manual — não são fonte
+*.zip
+
+# ruído do sistema
+node_modules/
+.DS_Store
+Thumbs.db
+desktop.ini

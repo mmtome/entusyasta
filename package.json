@@ -1,0 +1,11 @@
+{
+  "name": "entusyasta-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Site institucional da Entusyasta — agência de growth marketing. Roda sem bundler: as bibliotecas ficam em /vendor como ESM minificado e o navegador resolve os imports via importmap.",
+  "scripts": {
+    "dev": "node serve.mjs",
+    "start": "node serve.mjs"
+  }
+}

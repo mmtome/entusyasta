@@ -1,0 +1,101 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ENTUSYASTA — tokens de design
+   Cores amostradas pixel a pixel dos arquivos em /assets/logos.
+   Documentação completa: PALETA-DE-CORES.txt
+   ═══════════════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'Ibrand';
+  src: url('../../fonts/Ibrand.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  /* ── escala ciano (hue 176, base #00B7AC do logo) ───────────────── */
+  --teal-50: #e9f6f5;
+  --teal-100: #c9eeec;
+  --teal-200: #91e3df;
+  --teal-300: #56d7cf;
+  --teal-400: #21cac0;
+  --teal-500: #00b7ac;
+  --teal-600: #009990;
+  --teal-700: #007871;
+  --teal-800: #005954;
+  --teal-900: #00403c;
+  --teal-950: #00252e;
+
+  /* ── escala neutra (hue 186, dessaturada — convive com o ciano) ─── */
+  --ink-0: #fafcfc;
+  --ink-50: #f1f6f6;
+  --ink-100: #dfeaec;
+  --ink-200: #bfcdcf;
+  --ink-300: #91a9ac;
+  --ink-400: #678589;
+  --ink-500: #4f6669;
+  --ink-600: #3a4b4d;
+  --ink-700: #293436;
+  --ink-800: #1a2122;
+  --ink-900: #0f1414;
+  --ink-950: #080b0b;
+  --ink-1000: #040505;
+
+  /* ── cores literais da marca ────────────────────────────────────── */
+  --marfim: #fbf9f3;
+  --preto: #040707;
+
+  /* ── tokens semânticos ──────────────────────────────────────────── */
+  --c-bg: #040707;
+  --c-bg-deep: #00252e;
+  --c-surface: #0b1214;
+  --c-surface-2: #121b1d;
+  --c-line: rgba(251, 249, 243, 0.1);
+  --c-line-strong: rgba(251, 249, 243, 0.22);
+
+  --c-text: #fbf9f3;
+  --c-text-muted: #a9bcbe;
+  --c-text-faint: #678589;
+
+  --c-brand: #00b7ac;
+  --c-brand-bright: #21cac0;
+  --c-brand-deep: #007871;
+  --c-brand-glow: rgba(0, 183, 172, 0.38);
+
+  /* contraponto quente — só nos elementos ilustrativos (anjos/mão) */
+  --c-flesh: #e8c4a0;
+  --c-flesh-shadow: #a8724c;
+  --c-drape: #8c9aa0;
+
+  /* ── gradientes oficiais ────────────────────────────────────────── */
+  --g-abismo: radial-gradient(120% 90% at 15% 100%, #00252e 0%, #071113 45%, #040707 100%);
+  --g-aurora: linear-gradient(135deg, #00252e 0%, #00403c 50%, #040707 100%);
+  --g-assinatura: linear-gradient(90deg, transparent 0%, #00b7ac 35%, #56d7cf 65%, transparent 100%);
+  --g-vidro: linear-gradient(160deg, rgba(251, 249, 243, 0.06) 0%, rgba(251, 249, 243, 0.01) 100%);
+
+  /* ── tipografia ─────────────────────────────────────────────────── */
+  --f-display: 'Ibrand', 'Inter', system-ui, sans-serif;
+  --f-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* a Ibrand é larga e tem altura-x alta: os tamanhos ficam abaixo do
+     que se usaria numa grotesca comum, senão o título domina a tela */
+  --t-h1: clamp(2.1rem, 4.4vw, 4.4rem);
+  --t-h2: clamp(1.7rem, 3.2vw, 3.2rem);
+  --t-h3: clamp(1.2rem, 1.7vw, 1.65rem);
+  --t-body: clamp(1rem, 1.05vw, 1.15rem);
+  --t-label: 0.72rem;
+
+  /* ── ritmo e forma ──────────────────────────────────────────────── */
+  --gutter: clamp(1.25rem, 5vw, 6rem);
+  --max-w: 1560px;
+  --section-y: clamp(6rem, 14vh, 12rem);
+  --r-sm: 6px;
+  --r-md: 14px;
+  --r-lg: 28px;
+  --r-pill: 999px;
+
+  /* ── movimento ──────────────────────────────────────────────────── */
+  --e-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --e-inout: cubic-bezier(0.76, 0, 0.24, 1);
+  --e-soft: cubic-bezier(0.33, 1, 0.68, 1);
+}

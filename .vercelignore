@@ -1,0 +1,12 @@
+# originais do designer — os arquivos servidos estão em img/, logos/ e fonts/
+assets/
+
+# só servem para rodar local
+serve.mjs
+README.md
+node_modules/
+
+# segredos e estado da CLI — nunca devem ir para o deploy
+.env.local
+.env*.local
+.vercel/

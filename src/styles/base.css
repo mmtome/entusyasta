@@ -1,0 +1,206 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto; /* o Lenis cuida disso */
+  /* clip em vez de hidden: corta o que sangra (mão, penas, anjos)
+     sem quebrar o position:sticky da seção de método */
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--f-body);
+  font-size: var(--t-body);
+  line-height: 1.66;
+  /* corpo em 300: sobre fundo escuro o texto já ganha peso óptico,
+     e o 400 estava pesado ao lado da Ibrand */
+  font-weight: 300;
+  overflow-x: hidden;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body.is-locked {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* enquanto a pena é arrastada, nada de seleção de texto acidental */
+body.is-dragging,
+body.is-dragging * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* a classe é aplicada pelo JS ao ligar o cursor customizado */
+@media (hover: hover) and (pointer: fine) {
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: none;
+  }
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 400;
+  text-transform: lowercase;
+}
+
+h1 {
+  font-size: var(--t-h1);
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: var(--t-h2);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: var(--t-h3);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+p {
+  margin: 0;
+}
+
+::selection {
+  background: var(--c-brand);
+  color: var(--preto);
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-brand-bright);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ── utilitários ──────────────────────────────────────────────────── */
+
+.shell {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+.label {
+  font-size: var(--t-label);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-text-faint);
+  font-weight: 500;
+}
+
+.label--brand {
+  color: var(--c-brand);
+}
+
+/* a Ibrand não tem itálico real — o navegador inventaria um oblíquo torto */
+.accent {
+  color: var(--c-brand);
+  font-style: normal;
+}
+
+.lead {
+  font-size: clamp(1.05rem, 1.5vw, 1.4rem);
+  line-height: 1.58;
+  font-weight: 300;
+  color: var(--c-text-muted);
+  max-width: 62ch;
+}
+
+.rule {
+  height: 1px;
+  border: 0;
+  margin: 0;
+  background: var(--c-line);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── revelação de texto (linhas divididas em JS) ──────────────────── */
+
+/* cada palavra vira uma máscara com o miolo deslocado para baixo;
+   o padding/margem compensados evitam cortar descendentes (g, p, y) */
+.w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.wi {
+  display: inline-block;
+  transform: translateY(118%);
+  will-change: transform;
+}
+
+[data-reveal] {
+  will-change: transform, opacity;
+}
+
+/* ── acessibilidade de movimento ──────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

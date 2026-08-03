@@ -1,0 +1,58 @@
+# ═══════════════════════════════════════════════════════════════════
+#  Entusyasta — configuração do Apache (HostGator)
+#  O equivalente ao vercel.json: fecha o que não é do site e liga
+#  cache e compressão. Sintaxe Apache 2.4.
+# ═══════════════════════════════════════════════════════════════════
+
+# nunca listar o conteúdo de uma pasta sem index
+Options -Indexes
+
+# ── o que não deve ser servido ─────────────────────────────────────
+# arquivos ocultos (.env, .git, .vercelignore, .ftpquota...)
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# sobras de upload e configuração interna do projeto
+<FilesMatch "\.(zip|rar|tar|gz|psd|ai|exe|log)$">
+  Require all denied
+</FilesMatch>
+
+<FilesMatch "^(package\.json|package-lock\.json|vercel\.json|serve\.mjs|README\.md|PALETA-DE-CORES\.txt)$">
+  Require all denied
+</FilesMatch>
+
+# a pasta de originais do designer não é conteúdo público
+RedirectMatch 404 ^/assets(/.*)?$
+
+# ── página inicial ─────────────────────────────────────────────────
+DirectoryIndex index.html
+
+# ── compressão ─────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain
+  AddOutputFilterByType DEFLATE application/javascript text/javascript
+  AddOutputFilterByType DEFLATE image/svg+xml font/otf application/font-sfnt
+</IfModule>
+
+# ── cache ──────────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # bibliotecas e fonte não mudam: cache longo
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  # imagens: uma semana
+  ExpiresByType image/png "access plus 1 week"
+  ExpiresByType image/jpeg "access plus 1 week"
+  ExpiresByType image/svg+xml "access plus 1 week"
+  # o CSS e o HTML mudam a cada ajuste: cache curto
+  ExpiresByType text/css "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# o .otf precisa do tipo certo, senão o navegador recusa a fonte
+<IfModule mod_mime.c>
+  AddType font/otf .otf
+  AddType text/javascript .js
+</IfModule>

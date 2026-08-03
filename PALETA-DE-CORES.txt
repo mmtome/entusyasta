@@ -1,0 +1,241 @@
+═══════════════════════════════════════════════════════════════════════════════
+  ENTUSYASTA · MARKETING DIGITAL
+  SISTEMA DE CORES, TIPOGRAFIA E TOKENS DE DESIGN
+  Documento gerado a partir da amostragem de pixels dos arquivos oficiais de logo
+  em /assets/logos — nenhuma cor foi estimada de memória.
+═══════════════════════════════════════════════════════════════════════════════
+
+
+───────────────────────────────────────────────────────────────────────────────
+1 · CORES EXTRAÍDAS DAS LOGOS (fonte da verdade)
+───────────────────────────────────────────────────────────────────────────────
+
+Cada arquivo de logo é monocromático e 100% chapado. Os valores abaixo são o
+pixel exato, sem antialiasing, medido em cada arquivo:
+
+  CIANO ENTUSYASTA          #00B7AC   rgb(0, 183, 172)     hsl(176.4, 100%, 35.9%)
+    → arquivos: "simbolo ciano", "compacta ciano", "extensa ciano"
+    → 100% dos pixels opacos. É a cor-assinatura da marca.
+
+  MARFIM                    #FBF9F3   rgb(251, 249, 243)   hsl(45, 50%, 96.9%)
+    → arquivos: "simbolo branco", "compacta branca", "extensa branca"
+    → NÃO é branco puro. Tem 3% de calor (hue 45°). Nunca troque por #FFFFFF:
+      o marfim é o que dá o acabamento "impresso" da marca no fundo escuro.
+
+  VERDE ABISSAL             #00252E   rgb(0, 37, 46)       hsl(191.7, 100%, 9%)
+    → arquivo: "simbolo verde"
+    → Azul-esverdeado muito escuro. É a cor de profundidade da marca — usada
+      nos gradientes de fundo, não em texto.
+
+  PRETO ENTUSYASTA          #040707   rgb(4, 7, 7)         hsl(180, 27%, 2.2%)
+    → arquivo: "compacta preta"
+    → Preto levemente esverdeado. É o fundo padrão do site.
+      (O arquivo "simbolo preto" usa #000000 puro — preferir #040707.)
+
+
+───────────────────────────────────────────────────────────────────────────────
+2 · ESCALA CIANO (derivada de #00B7AC, hue travado em 176)
+───────────────────────────────────────────────────────────────────────────────
+
+  teal-50    #E9F6F5     véu / fundo de bloco claro
+  teal-100   #C9EEEC     hover em superfície clara
+  teal-200   #91E3DF     texto secundário sobre fundo escuro
+  teal-300   #56D7CF     links em hover, destaque em fundo preto
+  teal-400   #21CAC0     estados ativos, foco
+  teal-500   #00B7AC ★   COR DA MARCA — CTAs, grifos, traço da pena
+  teal-600   #009990     hover de botão sólido
+  teal-700   #007871     único tom que passa AA em fundo marfim (4.95:1)
+  teal-800   #005954     bordas em superfície escura
+  teal-900   #00403C     preenchimento sutil / glow interno
+  teal-950   #00252E ★   VERDE ABISSAL — fundo de profundidade
+
+
+───────────────────────────────────────────────────────────────────────────────
+3 · ESCALA NEUTRA "INK" (neutro frio-esverdeado, afinado com a marca)
+───────────────────────────────────────────────────────────────────────────────
+
+Neutros puros (cinza 0% saturação) sujam a marca ao lado do ciano. Esta escala
+carrega 14–24% de saturação em hue 186 para que cinza e ciano convivam.
+
+  ink-0      #FAFCFC     texto principal em fundo escuro (alternativa ao marfim)
+  ink-50     #F1F6F6
+  ink-100    #DFEAEC     texto de corpo em fundo escuro
+  ink-200    #BFCDCF     texto secundário
+  ink-300    #91A9AC     legendas, labels
+  ink-400    #678589     texto desabilitado / placeholder
+  ink-500    #4F6669     ícones inativos
+  ink-600    #3A4B4D     bordas visíveis
+  ink-700    #293436     divisórias
+  ink-800    #1A2122     cards sobre o fundo
+  ink-900    #0F1414     superfície elevada
+  ink-950    #080B0B     superfície base
+  ink-1000   #040505     fundo mais profundo
+
+
+───────────────────────────────────────────────────────────────────────────────
+4 · TOKENS SEMÂNTICOS (é isto que o CSS usa)
+───────────────────────────────────────────────────────────────────────────────
+
+  --c-bg              #040707     fundo do site
+  --c-bg-deep         #00252E     fundo dos gradientes de profundidade
+  --c-surface         #0B1214     cards e painéis
+  --c-surface-2       #121B1D     card em hover
+  --c-line            rgba(251,249,243,0.10)    divisórias e contornos
+  --c-line-strong     rgba(251,249,243,0.22)    contorno de pill / botão fantasma
+
+  --c-text            #FBF9F3     títulos e texto principal
+  --c-text-muted      #A9BCBE     texto de apoio
+  --c-text-faint      #678589     labels, numeração, metadados
+
+  --c-brand           #00B7AC     cor da marca
+  --c-brand-bright    #21CAC0     hover / estado ativo
+  --c-brand-deep      #007871     único ciano legível em fundo claro
+  --c-brand-glow      rgba(0,183,172,0.38)      halos, sombras coloridas
+
+  --c-flesh           #E8C4A0     tom de pele dos anjos (Renascença)
+  --c-flesh-shadow    #A8724C     sombra quente dos anjos
+  --c-drape           #8C9AA0     tecido cinza-azulado da mão de Da Vinci
+
+Os três últimos existem porque os assets de anjo e da mão barroca trazem uma
+paleta quente que não sai do ciano. Eles são o CONTRAPONTO da marca: usar só em
+elementos ilustrativos, nunca em UI.
+
+
+───────────────────────────────────────────────────────────────────────────────
+5 · GRADIENTES OFICIAIS
+───────────────────────────────────────────────────────────────────────────────
+
+  Abismo (fundo do hero — o mesmo do key visual)
+    radial-gradient(120% 90% at 15% 100%, #00252E 0%, #071113 45%, #040707 100%)
+
+  Aurora (blocos de destaque, seção de resultados)
+    linear-gradient(135deg, #00252E 0%, #00403C 50%, #040707 100%)
+
+  Assinatura (traço fino, sublinhados animados, barras de progresso)
+    linear-gradient(90deg, transparent 0%, #00B7AC 35%, #56D7CF 65%, transparent 100%)
+
+  Vidro (superfície dos cards)
+    linear-gradient(160deg, rgba(251,249,243,0.06) 0%, rgba(251,249,243,0.01) 100%)
+
+
+───────────────────────────────────────────────────────────────────────────────
+6 · CONTRASTE / ACESSIBILIDADE (WCAG 2.1, calculado)
+───────────────────────────────────────────────────────────────────────────────
+
+  Sobre o fundo #040707:
+    #FBF9F3   19.20:1   AAA   — texto de qualquer tamanho
+    #93E3DC   13.73:1   AAA
+    #5AD3C9   11.16:1   AAA
+    #21CAC0    9.29:1   AAA
+    #00B7AC    8.06:1   AAA   — a cor da marca é legível em texto normal
+    #678589    3.10:1   —     — só para texto ≥ 24px ou elementos decorativos
+    #00252E    1.26:1   ✗     — nunca usar como texto
+
+  Sobre o fundo #FBF9F3:
+    #040707   19.20:1   AAA
+    #00252E   15.30:1   AAA
+    #007871    4.95:1   AA    — usar ESTE ciano, não o #00B7AC
+    #00B7AC    2.38:1   ✗     — reprova em fundo claro; só em blocos ≥ 32px
+
+  REGRA PRÁTICA: #00B7AC é uma cor de fundo escuro. Em superfície clara, desça
+  para #007871 (teal-700).
+
+
+───────────────────────────────────────────────────────────────────────────────
+7 · PROPORÇÃO DE USO (o que mantém a marca reconhecível)
+───────────────────────────────────────────────────────────────────────────────
+
+  70%   Preto / Verde Abissal      fundo, respiro, profundidade
+  20%   Marfim                     tipografia, traços, contornos
+   8%   Ciano                      grifo, CTA, dado, estado ativo, luz da pena
+   2%   Tons de pele / drapeado     anjos, mão de Da Vinci, textura barroca
+
+O ciano nunca deve preencher grandes áreas. Ele funciona como LUZ dentro do
+escuro — é o mesmo papel que ele tem no key visual e no símbolo da pena.
+
+
+───────────────────────────────────────────────────────────────────────────────
+8 · TIPOGRAFIA
+───────────────────────────────────────────────────────────────────────────────
+
+  DISPLAY / TÍTULOS ......... Ibrand (assets/Ibrand.otf)
+    Geométrica, terminações arredondadas, contraste baixo, muito personalidade
+    no "a" e no "s". É a fonte do logotipo — portanto é a voz da marca.
+
+      h1   clamp(2.6rem, 7.2vw, 7.4rem)   line-height 0.94   tracking -0.03em
+      h2   clamp(2.0rem, 4.6vw, 4.4rem)   line-height 1.00   tracking -0.025em
+      h3   clamp(1.4rem, 2.2vw, 2.2rem)   line-height 1.08   tracking -0.015em
+
+    Regras: caixa baixa por padrão (como no logotipo). Nunca usar Ibrand abaixo
+    de 18px — as terminações arredondadas fecham e a leitura cai.
+
+  TEXTO / INTERFACE ......... Inter (variável, fallback do sistema)
+    Neutra e legível. Carrega todo o corpo, labels, botões e formulários.
+
+      corpo   17–19px   line-height 1.62   tracking 0
+      label   11–12px   tracking 0.16em   UPPERCASE   ink-300
+      dado    tabular-nums para contadores e números de resultado
+
+  ESPAÇAMENTO DE LETRA NO LOGO
+    O logotipo "entusyasta" tem tracking negativo e o descritor "marketing
+    digital" tem tracking ~0.42em. Esse contraste (título apertado × label
+    aberto) é replicado em todo o site — é a assinatura tipográfica da marca.
+
+
+───────────────────────────────────────────────────────────────────────────────
+9 · CSS PRONTO PARA COLAR
+───────────────────────────────────────────────────────────────────────────────
+
+:root{
+  --teal-50:#E9F6F5;  --teal-100:#C9EEEC; --teal-200:#91E3DF; --teal-300:#56D7CF;
+  --teal-400:#21CAC0; --teal-500:#00B7AC; --teal-600:#009990; --teal-700:#007871;
+  --teal-800:#005954; --teal-900:#00403C; --teal-950:#00252E;
+
+  --ink-0:#FAFCFC;    --ink-50:#F1F6F6;   --ink-100:#DFEAEC;  --ink-200:#BFCDCF;
+  --ink-300:#91A9AC;  --ink-400:#678589;  --ink-500:#4F6669;  --ink-600:#3A4B4D;
+  --ink-700:#293436;  --ink-800:#1A2122;  --ink-900:#0F1414;  --ink-950:#080B0B;
+  --ink-1000:#040505;
+
+  --marfim:#FBF9F3;   --preto:#040707;
+
+  --c-bg:#040707;     --c-bg-deep:#00252E; --c-surface:#0B1214;
+  --c-text:#FBF9F3;   --c-text-muted:#A9BCBE; --c-brand:#00B7AC;
+}
+
+
+───────────────────────────────────────────────────────────────────────────────
+10 · ARQUIVOS DE MARCA
+───────────────────────────────────────────────────────────────────────────────
+
+ORIGINAIS (pasta de trabalho, não são servidos pelo site)
+
+  assets/logos/simbolo    (ciano · branco · preto · verde)  — a pena isolada
+  assets/logos/compacta   (ciano · branca · preta)          — pena + wordmark
+  assets/logos/extensa    (ciano · branca · preta)          — wordmark horizontal
+  assets/pena.jpg         — fotografia original da pena (fundo preto)
+  assets/anjo 1.png       — cupido barroco com arco        → seção MÉTODO
+  assets/anjo 2.png       — querubim em voo                → seção HERO
+  assets/anjo 3.png       — cupido de asas rosadas         → seção MANIFESTO
+  assets/anjo 4.png       — querubim com auréola           → seção CTA
+  assets/mão da vinci.png — mão apontando, drapeado cinza  → seção HERO
+  assets/Ibrand.otf       — tipografia display
+
+  Regra: um anjo por seção, nenhum repetido ao longo do site.
+
+PUBLICADOS (o que o site carrega — nomes sem acento nem espaço)
+
+  img/anjo-1.png · img/anjo-2.png · img/anjo-3.png · img/anjo-4.png
+  img/mao-da-vinci.png
+  img/pena.png            — recorte da foto com canal alpha, gerado do pena.jpg
+  img/pena-alpha.png      — máscara de opacidade
+  logos/extensa-branca.png · logos/extensa-ciano.png
+  logos/simbolo-branco.png · logos/simbolo-ciano.png · logos/compacta-branca.png
+  fonts/Ibrand.otf
+  favicon-32.png · favicon-512.png · apple-touch-icon.png
+    → o símbolo centralizado num quadrado preto de cantos arredondados. O
+      arquivo de logo é 60x165 e, usado direto como favicon, ficaria espremido.
+
+  O símbolo do topo do site é logos/simbolo-branco.png.
+  img/pena.png é usado só nas penas decorativas de fundo (opacidade 9%).
+
+═══════════════════════════════════════════════════════════════════════════════
