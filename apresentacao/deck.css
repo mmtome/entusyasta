@@ -871,20 +871,35 @@ p {
     overflow: visible;
     background: #040707;
   }
+
   .deck {
     height: auto;
     overflow: visible;
   }
+
+  /* A4 paisagem = 210mm de altura; com 5mm de margem sobram 200mm.
+     A página fica em 196mm para nunca empurrar conteúdo para a folha
+     seguinte, e o conteúdo é dimensionado em pt, não em vw. */
   .slide {
     min-height: auto;
-    height: 185mm;
+    height: 196mm;
+    padding: 9mm 13mm;
+    overflow: hidden;
     page-break-after: always;
     break-after: page;
   }
+
+  .slide:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
   [data-anim] {
     opacity: 1 !important;
     transform: none !important;
+    transition: none !important;
   }
+
   .topo,
   .pontos,
   .ajuda,
@@ -892,9 +907,82 @@ p {
   .barra {
     display: none !important;
   }
+
+  /* tipografia em pontos: vw não significa nada no papel */
+  .slide h2 {
+    font-size: 25pt;
+  }
+  .slide h3 {
+    font-size: 12pt;
+  }
+  .capa h1 {
+    font-size: 16pt;
+  }
+  .capa__marca {
+    width: 78mm;
+  }
+  .capa__simbolo {
+    height: 16mm;
+  }
+  .eyebrow {
+    font-size: 7pt;
+    margin-bottom: 4mm;
+  }
+  .topicos {
+    margin-top: 7mm;
+    gap: 4mm;
+  }
+  .topicos li {
+    font-size: 12pt;
+  }
+  .topicos small {
+    font-size: 8pt;
+  }
+  .compara,
+  .pacotes,
+  .etapas,
+  .numeros {
+    margin-top: 6mm;
+  }
+  .compara li,
+  .pacote li,
+  .etapa p {
+    font-size: 8.5pt;
+  }
+  .pacote__nome {
+    font-size: 12pt;
+  }
+  .pacote__quem {
+    font-size: 7.5pt;
+    min-height: 0;
+  }
+  .pacote__preco b {
+    font-size: 19pt;
+  }
+  .pacote__preco {
+    margin-top: 4mm;
+  }
+  .pacote ul {
+    margin-bottom: 5mm;
+  }
+  .botao {
+    font-size: 8pt;
+    padding: 2.5mm 5mm;
+  }
+  .rodape-nota {
+    font-size: 7.5pt;
+    margin-top: 4mm;
+  }
+  .slide .texto {
+    font-size: 10pt;
+  }
+  .anjo {
+    animation: none;
+  }
+
   @page {
     size: A4 landscape;
-    margin: 6mm;
+    margin: 5mm;
   }
 }
 
