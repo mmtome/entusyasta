@@ -277,6 +277,48 @@ p {
   font-weight: 500;
 }
 
+/* ── tópicos: o formato padrão dos slides ──────────────────────────── */
+.topicos {
+  list-style: none;
+  margin: clamp(1.6rem, 4vh, 2.8rem) 0 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(0.9rem, 2vh, 1.4rem);
+  max-width: 60ch;
+}
+
+.topicos li {
+  position: relative;
+  padding-left: 2rem;
+  font-size: clamp(1.02rem, 1.45vw, 1.45rem);
+  line-height: 1.4;
+  color: var(--c-text);
+}
+
+.topicos li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--c-brand);
+}
+
+.topicos--duplo {
+  max-width: none;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(0.9rem, 2vh, 1.4rem) clamp(2rem, 4vw, 4rem);
+}
+
+.topicos small {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--c-text-faint);
+  margin-top: 0.25rem;
+}
+
 /* ── antes × depois ────────────────────────────────────────────────── */
 .compara {
   display: grid;
