@@ -277,6 +277,263 @@ p {
   font-weight: 500;
 }
 
+/* ── antes × depois ────────────────────────────────────────────────── */
+.compara {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: stretch;
+  margin-top: clamp(1.8rem, 4vh, 3rem);
+}
+
+.compara__lado {
+  padding: clamp(1.2rem, 2vw, 1.8rem);
+  border-radius: var(--r-md);
+  border: 1px solid var(--c-line);
+}
+
+.compara__lado--antes {
+  background: rgba(251, 249, 243, 0.02);
+}
+
+.compara__lado--depois {
+  border-color: var(--c-brand);
+  background: linear-gradient(160deg, rgba(0, 183, 172, 0.12), rgba(0, 183, 172, 0.02));
+}
+
+.compara__titulo {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 1.1rem;
+  color: var(--c-text-faint);
+}
+
+.compara__lado--depois .compara__titulo {
+  color: var(--c-brand);
+}
+
+.compara ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.compara li {
+  font-size: clamp(0.9rem, 1vw, 1.02rem);
+  color: var(--c-text-muted);
+  padding-left: 1.4rem;
+  position: relative;
+}
+
+.compara li::before {
+  position: absolute;
+  left: 0;
+  top: -0.05em;
+  font-size: 1.05em;
+}
+
+.compara__lado--antes li::before {
+  content: '×';
+  color: var(--c-text-faint);
+}
+
+.compara__lado--depois li::before {
+  content: '✓';
+  color: var(--c-brand);
+}
+
+.compara__seta {
+  align-self: center;
+  font-size: 1.6rem;
+  color: var(--c-brand);
+}
+
+/* ── pacotes ───────────────────────────────────────────────────────── */
+.pacotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: clamp(0.9rem, 1.6vw, 1.4rem);
+  margin-top: clamp(1.5rem, 3.5vh, 2.5rem);
+  align-items: stretch;
+}
+
+.pacote {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.3rem, 2.2vw, 1.9rem);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-md);
+  background: var(--g-vidro);
+}
+
+.pacote--destaque {
+  border-color: var(--c-brand);
+  background: linear-gradient(170deg, rgba(0, 183, 172, 0.14), rgba(0, 183, 172, 0.02));
+  box-shadow: 0 0 60px rgba(0, 183, 172, 0.12);
+}
+
+.selo {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.25rem 0.9rem;
+  border-radius: var(--r-pill);
+  background: var(--c-brand);
+  color: var(--preto);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pacote__nome {
+  font-family: var(--f-display);
+  font-size: clamp(1.25rem, 1.9vw, 1.7rem);
+  text-transform: lowercase;
+  letter-spacing: -0.02em;
+}
+
+.pacote__quem {
+  font-size: 0.82rem;
+  color: var(--c-text-faint);
+  margin-top: 0.4rem;
+  min-height: 2.4em;
+}
+
+.pacote__preco {
+  margin: 1.1rem 0 0.3rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.pacote__preco b {
+  font-family: var(--f-display);
+  font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--c-text);
+}
+
+.pacote__preco span {
+  font-size: 0.8rem;
+  color: var(--c-text-faint);
+}
+
+.pacote__de {
+  font-size: 0.72rem;
+  color: var(--c-text-faint);
+  margin-bottom: 1rem;
+}
+
+.pacote ul {
+  list-style: none;
+  margin: 0 0 1.4rem;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+  flex: 1;
+}
+
+.pacote li {
+  position: relative;
+  padding-left: 1.3rem;
+  font-size: 0.88rem;
+  color: var(--c-text-muted);
+}
+
+.pacote li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--c-brand);
+}
+
+.pacote .botao {
+  justify-content: center;
+  width: 100%;
+  font-size: 0.86rem;
+  padding: 0.7rem 1rem;
+}
+
+.rodape-nota {
+  margin-top: clamp(1rem, 2.5vh, 1.6rem);
+  font-size: 0.8rem;
+  color: var(--c-text-faint);
+  text-align: center;
+}
+
+/* ── prova social ──────────────────────────────────────────────────── */
+.citacoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: clamp(0.9rem, 1.6vw, 1.4rem);
+  margin-top: clamp(1.5rem, 3.5vh, 2.4rem);
+}
+
+.citacao {
+  padding: clamp(1.1rem, 1.8vw, 1.5rem);
+  border-left: 2px solid var(--c-brand);
+  background: rgba(251, 249, 243, 0.03);
+}
+
+.citacao p {
+  font-size: 0.92rem;
+  color: var(--c-text);
+}
+
+.citacao cite {
+  display: block;
+  margin-top: 0.8rem;
+  font-style: normal;
+  font-size: 0.76rem;
+  color: var(--c-text-faint);
+}
+
+/* ── garantia ──────────────────────────────────────────────────────── */
+.garantia {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(1rem, 2vw, 1.8rem);
+  margin-top: clamp(1.8rem, 4vh, 3rem);
+}
+
+.garantia__item h3 {
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  margin-bottom: 0.55rem;
+}
+
+.garantia__item p {
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+}
+
+.garantia__item::before {
+  content: '';
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--c-brand);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .compara {
+    grid-template-columns: 1fr;
+  }
+  .compara__seta {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+}
+
 /* ── etapas do método ──────────────────────────────────────────────── */
 .etapas {
   display: grid;
