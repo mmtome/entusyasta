@@ -106,49 +106,51 @@
         <div class="shell filtros__linha">
           <span class="filtros__rotulo">filtrar</span>
           <button class="filtro is-ativo" data-filtro="todos" type="button">todos</button>
-          <button class="filtro" data-filtro="site" type="button">sites</button>
-          <button class="filtro" data-filtro="sistema" type="button">sistemas</button>
-          <button class="filtro" data-filtro="marca" type="button">identidade</button>
-          <button class="filtro" data-filtro="3d" type="button">3d &amp; motion</button>
+          <button class="filtro" data-filtro="saude" type="button">saúde</button>
+          <button class="filtro" data-filtro="evento" type="button">eventos</button>
+          <button class="filtro" data-filtro="institucional" type="button">institucional</button>
         </div>
       </div>
 
       <!-- ══ grade ═══════════════════════════════════════════════ -->
       <!-- ┌──────────────────────────────────────────────────────────┐
-           │  Para adicionar um trabalho: copie um <a class="trab">, │
-           │  ajuste href, imagem, cliente, nome, descrição, tags e   │
-           │  o data-cat (site · sistema · marca · 3d).               │
-           │  A miniatura é gerada do site no ar — peça para eu       │
-           │  recapturar quando o projeto mudar.                      │
+           │  Para adicionar um trabalho: copie um bloco <a class=    │
+           │  "trab"> e ajuste href, imagem, cliente, nome, descrição, │
+           │  tags e o data-cat.                                      │
+           │                                                          │
+           │  data-cat aceita mais de uma categoria separada por       │
+           │  espaço: saude · evento · institucional. Ela precisa     │
+           │  bater com o data-filtro dos botões acima.               │
+           │                                                          │
+           │  As miniaturas em img/ são capturas dos sites no ar,     │
+           │  feitas por script — peça para recapturar quando o site  │
+           │  do cliente mudar.                                       │
            └──────────────────────────────────────────────────────────┘ -->
       <section class="trabalhos">
         <div class="shell">
           <div class="trab-grade" id="grade">
             <a
               class="trab"
-              href="https://lancoffee.vercel.app"
+              href="https://uaisummit.com.br/"
               target="_blank"
               rel="noopener"
-              data-cat="site marca 3d"
+              data-cat="evento"
               data-cursor="abrir"
             >
               <span class="trab__media">
-                <img class="trab__img" src="img/lancoffee.jpg" alt="Site do café LanCoffee" loading="lazy" />
+                <img class="trab__img" src="img/uaisummit.jpg" alt="Site do UAI Summit 2026" loading="lazy" />
                 <span class="trab__veu"></span>
                 <span class="trab__abrir">abrir site ↗</span>
               </span>
               <span class="trab__corpo">
                 <span>
-                  <span class="trab__cliente">LanCoffee</span>
-                  <h2 class="trab__nome">sabor que conecta</h2>
-                  <span class="trab__desc">
-                    Marca e site para café 100% arábica, com a embalagem reconstruída em 3D
-                    procedural direto no navegador.
-                  </span>
+                  <span class="trab__cliente">UAI Summit</span>
+                  <h2 class="trab__nome">sob pressão, carbono vira diamante</h2>
+                  <span class="trab__desc">Site do maior evento de negócios do Triângulo Mineiro: venda de ingressos em três pacotes, line-up de palestrantes e conversão direta para checkout.</span>
                   <span class="trab__tags">
-                    <span class="trab__tag">site</span>
-                    <span class="trab__tag">identidade</span>
-                    <span class="trab__tag">3d</span>
+                    <span class="trab__tag">evento</span>
+                    <span class="trab__tag">ingressos</span>
+                    <span class="trab__tag">landing</span>
                   </span>
                 </span>
                 <span class="trab__ano">2026</span>
@@ -157,29 +159,26 @@
 
             <a
               class="trab"
-              href="https://triangulo-site-five.vercel.app"
+              href="https://airaodontologia.com.br/"
               target="_blank"
               rel="noopener"
-              data-cat="site marca 3d"
+              data-cat="saude institucional"
               data-cursor="abrir"
             >
               <span class="trab__media">
-                <img class="trab__img" src="img/triangulo.jpg" alt="Site da Triângulo Solutions" loading="lazy" />
+                <img class="trab__img" src="img/airaodontologia.jpg" alt="Site da AIRA Odontologia Integrada" loading="lazy" />
                 <span class="trab__veu"></span>
                 <span class="trab__abrir">abrir site ↗</span>
               </span>
               <span class="trab__corpo">
                 <span>
-                  <span class="trab__cliente">Triângulo Solutions</span>
-                  <h2 class="trab__nome">mapear, resolver, lucrar</h2>
-                  <span class="trab__desc">
-                    Landing de tecnologia e gestão com hero 3D do prisma da marca, saída do
-                    manual de identidade.
-                  </span>
+                  <span class="trab__cliente">AIRA Odontologia Integrada</span>
+                  <h2 class="trab__nome">um só cuidado para o seu sorriso</h2>
+                  <span class="trab__desc">Clínica de Ribeirão Preto com seis especialidades. Site institucional com blog, agendamento por WhatsApp e SEO local para cada especialidade.</span>
                   <span class="trab__tags">
-                    <span class="trab__tag">site</span>
-                    <span class="trab__tag">identidade</span>
-                    <span class="trab__tag">3d</span>
+                    <span class="trab__tag">saúde</span>
+                    <span class="trab__tag">institucional</span>
+                    <span class="trab__tag">blog</span>
                   </span>
                 </span>
                 <span class="trab__ano">2026</span>
@@ -188,28 +187,25 @@
 
             <a
               class="trab"
-              href="https://ribercon.vercel.app"
+              href="https://www.juliacastroendodontia.com.br/"
               target="_blank"
               rel="noopener"
-              data-cat="sistema"
+              data-cat="saude"
               data-cursor="abrir"
             >
               <span class="trab__media">
-                <img class="trab__img" src="img/ribercon.jpg" alt="Sistema Ribercon Fila do Dia" loading="lazy" />
+                <img class="trab__img" src="img/juliacastro.jpg" alt="Site da Dra. Júlia Castro Endodontia" loading="lazy" />
                 <span class="trab__veu"></span>
                 <span class="trab__abrir">abrir site ↗</span>
               </span>
               <span class="trab__corpo">
                 <span>
-                  <span class="trab__cliente">Grupo Ribercon</span>
-                  <h2 class="trab__nome">fila do dia</h2>
-                  <span class="trab__desc">
-                    Playbook diário de ativação comercial: o time abre e sabe exatamente quem
-                    contatar hoje.
-                  </span>
+                  <span class="trab__cliente">Dra. Júlia Castro</span>
+                  <h2 class="trab__nome">tratamento de canal sem dor</h2>
+                  <span class="trab__desc">Endodontia em Ribeirão Preto. Página construída em cima da objeção que mais trava o paciente: o medo da dor.</span>
                   <span class="trab__tags">
-                    <span class="trab__tag">sistema</span>
-                    <span class="trab__tag">comercial</span>
+                    <span class="trab__tag">saúde</span>
+                    <span class="trab__tag">endodontia</span>
                   </span>
                 </span>
                 <span class="trab__ano">2026</span>
@@ -218,28 +214,25 @@
 
             <a
               class="trab"
-              href="https://triangulo-gestor.vercel.app"
+              href="https://tainaandradeendodontia.com.br/"
               target="_blank"
               rel="noopener"
-              data-cat="sistema"
+              data-cat="saude"
               data-cursor="abrir"
             >
               <span class="trab__media">
-                <img class="trab__img" src="img/triangulo-gestor.jpg" alt="Triângulo Gestor" loading="lazy" />
+                <img class="trab__img" src="img/tainaandrade.jpg" alt="Site da Dra. Tainá Andrade Endodontia" loading="lazy" />
                 <span class="trab__veu"></span>
                 <span class="trab__abrir">abrir site ↗</span>
               </span>
               <span class="trab__corpo">
                 <span>
-                  <span class="trab__cliente">Triângulo Solutions</span>
-                  <h2 class="trab__nome">gestor de conteúdo</h2>
-                  <span class="trab__desc">
-                    Sistema interno para planejar e acompanhar a produção editorial, do
-                    briefing à publicação.
-                  </span>
+                  <span class="trab__cliente">Dra. Tainá Andrade</span>
+                  <h2 class="trab__nome">endodontia com tecnologia</h2>
+                  <span class="trab__desc">Site de consultório com identidade própria, apresentação de tratamentos e caminho curto do primeiro clique ao agendamento.</span>
                   <span class="trab__tags">
-                    <span class="trab__tag">sistema</span>
-                    <span class="trab__tag">gestão</span>
+                    <span class="trab__tag">saúde</span>
+                    <span class="trab__tag">endodontia</span>
                   </span>
                 </span>
                 <span class="trab__ano">2026</span>
@@ -248,28 +241,25 @@
 
             <a
               class="trab"
-              href="https://fn-cortinas-mm.vercel.app"
+              href="https://alimentrijr.com/"
               target="_blank"
               rel="noopener"
-              data-cat="sistema"
+              data-cat="institucional"
               data-cursor="abrir"
             >
               <span class="trab__media">
-                <img class="trab__img" src="img/fn-cortinas.jpg" alt="FN Cortinas — precificação" loading="lazy" />
+                <img class="trab__img" src="img/alimentrijr.jpg" alt="Site da AlimenTRI Jr." loading="lazy" />
                 <span class="trab__veu"></span>
                 <span class="trab__abrir">abrir site ↗</span>
               </span>
               <span class="trab__corpo">
                 <span>
-                  <span class="trab__cliente">FN Cortinas</span>
-                  <h2 class="trab__nome">precificação premium</h2>
-                  <span class="trab__desc">
-                    Calculadora de orçamento para cortinas e persianas de alto padrão, com
-                    fechamento na hora.
-                  </span>
+                  <span class="trab__cliente">AlimenTRI Jr.</span>
+                  <h2 class="trab__nome">nutrição em soluções inteligentes</h2>
+                  <span class="trab__desc">Empresa júnior de nutrição da UFTM. Site que traduz consultoria acadêmica em serviço vendável, com orçamento e apresentação da equipe.</span>
                   <span class="trab__tags">
-                    <span class="trab__tag">sistema</span>
-                    <span class="trab__tag">orçamento</span>
+                    <span class="trab__tag">institucional</span>
+                    <span class="trab__tag">consultoria</span>
                   </span>
                 </span>
                 <span class="trab__ano">2026</span>
@@ -278,26 +268,25 @@
 
             <a
               class="trab"
-              href="../index.html"
-              data-cat="site marca 3d"
+              href="https://copainteratleticas.com.br/"
+              target="_blank"
+              rel="noopener"
+              data-cat="evento"
               data-cursor="abrir"
             >
               <span class="trab__media">
-                <img class="trab__img" src="img/entusyasta.jpg" alt="Site da Entusyasta" loading="lazy" />
+                <img class="trab__img" src="img/copainteratleticas.jpg" alt="Site da Copa Inter Atléticas" loading="lazy" />
                 <span class="trab__veu"></span>
                 <span class="trab__abrir">abrir site ↗</span>
               </span>
               <span class="trab__corpo">
                 <span>
-                  <span class="trab__cliente">Entusyasta</span>
-                  <h2 class="trab__nome">casa de ferreiro</h2>
-                  <span class="trab__desc">
-                    Nosso próprio site: identidade, animação amarrada ao scroll e elementos
-                    interativos. Sem bundler, publica copiando a pasta.
-                  </span>
+                  <span class="trab__cliente">Copa Inter Atléticas</span>
+                  <h2 class="trab__nome">quatro dias, uma cidade inteira</h2>
+                  <span class="trab__desc">Site do maior evento universitário de Uberaba. Contagem regressiva, cobertura pós-evento e o gancho para a edição seguinte.</span>
                   <span class="trab__tags">
-                    <span class="trab__tag">site</span>
-                    <span class="trab__tag">identidade</span>
+                    <span class="trab__tag">evento</span>
+                    <span class="trab__tag">universitário</span>
                   </span>
                 </span>
                 <span class="trab__ano">2026</span>
