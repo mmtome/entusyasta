@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Trabalhos — Entusyasta</title>
+    <meta
+      name="description"
+      content="Sites, sistemas e marcas que a Entusyasta colocou no ar. Cada projeto com link para o site publicado."
+    />
+    <meta name="theme-color" content="#040707" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="../favicon-512.png" />
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Trabalhos — Entusyasta" />
+    <meta property="og:description" content="Sites e sistemas que colocamos no ar." />
+    <meta property="og:image" content="../logos/compacta-branca.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../src/styles/tokens.css" />
+    <link rel="stylesheet" href="../src/styles/base.css" />
+    <link rel="stylesheet" href="../src/styles/chrome.css" />
+    <link rel="stylesheet" href="../src/styles/sections.css" />
+    <link rel="stylesheet" href="trabalhos.css" />
+  </head>
+
+  <body>
+    <div class="cursor" id="cursor" aria-hidden="true">
+      <div class="cursor__ring"><span class="cursor__text" id="cursorText"></span></div>
+      <div class="cursor__dot"></div>
+    </div>
+    <div class="scroll-progress"><div class="scroll-progress__fill" id="progressFill"></div></div>
+
+    <!-- ══ navegação ═════════════════════════════════════════════ -->
+    <header class="nav is-stuck" id="nav">
+      <div class="shell nav__inner">
+        <a class="nav__logo" href="../index.html" aria-label="Entusyasta — início" data-cursor="início">
+          <img src="../logos/extensa-branca.png" alt="Entusyasta marketing digital" />
+        </a>
+
+        <nav aria-label="Principal">
+          <ul class="nav__links">
+            <li><a class="nav__link" href="../index.html#manifesto">manifesto</a></li>
+            <li><a class="nav__link" href="../index.html#servicos">serviços</a></li>
+            <li><a class="nav__link" href="../index.html#metodo">método</a></li>
+            <li><a class="nav__link" href="index.html">trabalhos</a></li>
+            <li><a class="nav__link" href="../apresentacao/">proposta</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav__right">
+          <a class="btn btn--solid" href="../index.html#contato" data-magnetic data-cursor="bora">
+            <span>vamos conversar</span>
+          </a>
+          <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="menu" id="menu">
+      <div class="shell">
+        <ul class="menu__list">
+          <li class="menu__item"><a class="menu__link" href="../index.html#manifesto">manifesto</a></li>
+          <li class="menu__item"><a class="menu__link" href="../index.html#servicos">serviços</a></li>
+          <li class="menu__item"><a class="menu__link" href="../index.html#metodo">método</a></li>
+          <li class="menu__item"><a class="menu__link" href="index.html">trabalhos</a></li>
+          <li class="menu__item"><a class="menu__link" href="../apresentacao/">proposta</a></li>
+          <li class="menu__item"><a class="menu__link" href="../index.html#contato">contato</a></li>
+        </ul>
+        <div class="menu__foot">
+          <a href="mailto:contato@entusyasta.com.br">contato@entusyasta.com.br</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener">instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <!-- ══ cabeçalho ═══════════════════════════════════════════ -->
+      <section class="trab-hero">
+        <img class="pena-fundo plume" src="../img/pena.png" alt="" aria-hidden="true"
+             style="right:-3%; top:-10%; width:26vw; transform:rotate(18deg); opacity:.08" />
+        <div class="shell">
+          <span class="label label--brand" data-reveal>trabalhos</span>
+          <h1 class="trab-hero__titulo" data-split style="margin-top: 1rem">
+            o que já está <em class="accent">no ar</em>.
+          </h1>
+          <p class="lead" data-reveal>
+            Uma seleção de sites e sistemas que colocamos para funcionar. Todos com link para o
+            projeto publicado: pode abrir e navegar.
+          </p>
+        </div>
+      </section>
+
+      <!-- ══ filtros ═════════════════════════════════════════════ -->
+      <div class="filtros" id="filtros">
+        <div class="shell filtros__linha">
+          <span class="filtros__rotulo">filtrar</span>
+          <button class="filtro is-ativo" data-filtro="todos" type="button">todos</button>
+          <button class="filtro" data-filtro="site" type="button">sites</button>
+          <button class="filtro" data-filtro="sistema" type="button">sistemas</button>
+          <button class="filtro" data-filtro="marca" type="button">identidade</button>
+          <button class="filtro" data-filtro="3d" type="button">3d &amp; motion</button>
+        </div>
+      </div>
+
+      <!-- ══ grade ═══════════════════════════════════════════════ -->
+      <!-- ┌──────────────────────────────────────────────────────────┐
+           │  Para adicionar um trabalho: copie um <a class="trab">, │
+           │  ajuste href, imagem, cliente, nome, descrição, tags e   │
+           │  o data-cat (site · sistema · marca · 3d).               │
+           │  A miniatura é gerada do site no ar — peça para eu       │
+           │  recapturar quando o projeto mudar.                      │
+           └──────────────────────────────────────────────────────────┘ -->
+      <section class="trabalhos">
+        <div class="shell">
+          <div class="trab-grade" id="grade">
+            <a
+              class="trab"
+              href="https://lancoffee.vercel.app"
+              target="_blank"
+              rel="noopener"
+              data-cat="site marca 3d"
+              data-cursor="abrir"
+            >
+              <span class="trab__media">
+                <img class="trab__img" src="img/lancoffee.jpg" alt="Site do café LanCoffee" loading="lazy" />
+                <span class="trab__veu"></span>
+                <span class="trab__abrir">abrir site ↗</span>
+              </span>
+              <span class="trab__corpo">
+                <span>
+                  <span class="trab__cliente">LanCoffee</span>
+                  <h2 class="trab__nome">sabor que conecta</h2>
+                  <span class="trab__desc">
+                    Marca e site para café 100% arábica, com a embalagem reconstruída em 3D
+                    procedural direto no navegador.
+                  </span>
+                  <span class="trab__tags">
+                    <span class="trab__tag">site</span>
+                    <span class="trab__tag">identidade</span>
+                    <span class="trab__tag">3d</span>
+                  </span>
+                </span>
+                <span class="trab__ano">2026</span>
+              </span>
+            </a>
+
+            <a
+              class="trab"
+              href="https://triangulo-site-five.vercel.app"
+              target="_blank"
+              rel="noopener"
+              data-cat="site marca 3d"
+              data-cursor="abrir"
+            >
+              <span class="trab__media">
+                <img class="trab__img" src="img/triangulo.jpg" alt="Site da Triângulo Solutions" loading="lazy" />
+                <span class="trab__veu"></span>
+                <span class="trab__abrir">abrir site ↗</span>
+              </span>
+              <span class="trab__corpo">
+                <span>
+                  <span class="trab__cliente">Triângulo Solutions</span>
+                  <h2 class="trab__nome">mapear, resolver, lucrar</h2>
+                  <span class="trab__desc">
+                    Landing de tecnologia e gestão com hero 3D do prisma da marca, saída do
+                    manual de identidade.
+                  </span>
+                  <span class="trab__tags">
+                    <span class="trab__tag">site</span>
+                    <span class="trab__tag">identidade</span>
+                    <span class="trab__tag">3d</span>
+                  </span>
+                </span>
+                <span class="trab__ano">2026</span>
+              </span>
+            </a>
+
+            <a
+              class="trab"
+              href="https://ribercon.vercel.app"
+              target="_blank"
+              rel="noopener"
+              data-cat="sistema"
+              data-cursor="abrir"
+            >
+              <span class="trab__media">
+                <img class="trab__img" src="img/ribercon.jpg" alt="Sistema Ribercon Fila do Dia" loading="lazy" />
+                <span class="trab__veu"></span>
+                <span class="trab__abrir">abrir site ↗</span>
+              </span>
+              <span class="trab__corpo">
+                <span>
+                  <span class="trab__cliente">Grupo Ribercon</span>
+                  <h2 class="trab__nome">fila do dia</h2>
+                  <span class="trab__desc">
+                    Playbook diário de ativação comercial: o time abre e sabe exatamente quem
+                    contatar hoje.
+                  </span>
+                  <span class="trab__tags">
+                    <span class="trab__tag">sistema</span>
+                    <span class="trab__tag">comercial</span>
+                  </span>
+                </span>
+                <span class="trab__ano">2026</span>
+              </span>
+            </a>
+
+            <a
+              class="trab"
+              href="https://triangulo-gestor.vercel.app"
+              target="_blank"
+              rel="noopener"
+              data-cat="sistema"
+              data-cursor="abrir"
+            >
+              <span class="trab__media">
+                <img class="trab__img" src="img/triangulo-gestor.jpg" alt="Triângulo Gestor" loading="lazy" />
+                <span class="trab__veu"></span>
+                <span class="trab__abrir">abrir site ↗</span>
+              </span>
+              <span class="trab__corpo">
+                <span>
+                  <span class="trab__cliente">Triângulo Solutions</span>
+                  <h2 class="trab__nome">gestor de conteúdo</h2>
+                  <span class="trab__desc">
+                    Sistema interno para planejar e acompanhar a produção editorial, do
+                    briefing à publicação.
+                  </span>
+                  <span class="trab__tags">
+                    <span class="trab__tag">sistema</span>
+                    <span class="trab__tag">gestão</span>
+                  </span>
+                </span>
+                <span class="trab__ano">2026</span>
+              </span>
+            </a>
+
+            <a
+              class="trab"
+              href="https://fn-cortinas-mm.vercel.app"
+              target="_blank"
+              rel="noopener"
+              data-cat="sistema"
+              data-cursor="abrir"
+            >
+              <span class="trab__media">
+                <img class="trab__img" src="img/fn-cortinas.jpg" alt="FN Cortinas — precificação" loading="lazy" />
+                <span class="trab__veu"></span>
+                <span class="trab__abrir">abrir site ↗</span>
+              </span>
+              <span class="trab__corpo">
+                <span>
+                  <span class="trab__cliente">FN Cortinas</span>
+                  <h2 class="trab__nome">precificação premium</h2>
+                  <span class="trab__desc">
+                    Calculadora de orçamento para cortinas e persianas de alto padrão, com
+                    fechamento na hora.
+                  </span>
+                  <span class="trab__tags">
+                    <span class="trab__tag">sistema</span>
+                    <span class="trab__tag">orçamento</span>
+                  </span>
+                </span>
+                <span class="trab__ano">2026</span>
+              </span>
+            </a>
+
+            <a
+              class="trab"
+              href="../index.html"
+              data-cat="site marca 3d"
+              data-cursor="abrir"
+            >
+              <span class="trab__media">
+                <img class="trab__img" src="img/entusyasta.jpg" alt="Site da Entusyasta" loading="lazy" />
+                <span class="trab__veu"></span>
+                <span class="trab__abrir">abrir site ↗</span>
+              </span>
+              <span class="trab__corpo">
+                <span>
+                  <span class="trab__cliente">Entusyasta</span>
+                  <h2 class="trab__nome">casa de ferreiro</h2>
+                  <span class="trab__desc">
+                    Nosso próprio site: identidade, animação amarrada ao scroll e elementos
+                    interativos. Sem bundler, publica copiando a pasta.
+                  </span>
+                  <span class="trab__tags">
+                    <span class="trab__tag">site</span>
+                    <span class="trab__tag">identidade</span>
+                  </span>
+                </span>
+                <span class="trab__ano">2026</span>
+              </span>
+            </a>
+          </div>
+
+          <p class="vazio" id="vazio">Nenhum trabalho nessa categoria ainda.</p>
+        </div>
+      </section>
+
+      <!-- ══ chamada ═════════════════════════════════════════════ -->
+      <section class="section trab-cta">
+        <span class="cta__glow"></span>
+        <div class="shell cta__inner">
+          <span class="label label--brand" data-reveal>próximo</span>
+          <h2 class="cta__title" data-split>o próximo aqui pode ser o seu.</h2>
+          <p class="lead" data-reveal style="text-align: center">
+            Conta o que você precisa colocar no ar. Em até 24h a gente responde com um
+            diagnóstico inicial.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center">
+            <a
+              class="btn btn--solid"
+              href="https://wa.me/5500000000000"
+              target="_blank"
+              rel="noopener"
+              data-magnetic
+              data-cursor="whatsapp"
+            >
+              <span>chamar no whatsapp</span>
+            </a>
+            <a class="btn btn--ghost" href="../apresentacao/" data-magnetic data-cursor="ver">
+              <span>ver a proposta</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">
+        <div class="footer__bottom" style="margin-top: 0; border-top: 0">
+          <span>© <span id="year">2026</span> Entusyasta — marketing digital</span>
+          <a href="../index.html">voltar para o site</a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "gsap": "../vendor/gsap.js",
+          "gsap/ScrollTrigger": "../vendor/gsap-scrolltrigger.js",
+          "lenis": "../vendor/lenis.js"
+        }
+      }
+    </script>
+    <script type="module" src="trabalhos.js"></script>
+  </body>
+</html>
